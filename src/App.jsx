@@ -8,23 +8,24 @@ import Comparacion from './components/Comparacion'
 import Responsabilidades from './components/Responsabilidades'
 import Datos from './components/Datos'
 import Conclusiones from './components/Conclusiones'
+import Cierre from './components/Cierre' // <-- NUEVA LÍNEA
 
 function App() {
   const [slideActual, setSlideActual] = useState(0)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const proyectorRef = useRef(null) // Referencia para saber qué elemento hacer pantalla completa
 
-  const diapositivas = [
-    <Portada key="0" />,
-    <Resumen key="1" />,
-    <MarcoNormativo key="2" />,
-    <Tipificacion key="3" />,
-    <Comparacion key="4" />,
-    <Responsabilidades key="5" />,
-    <Datos key="6" />,
-    <Conclusiones key="7" />
-  ]
-
+const diapositivas = [
+  <Portada key="0" />,
+  <Resumen key="1" />,
+  <MarcoNormativo key="2" />,
+  <Tipificacion key="3" />,
+  <Comparacion key="4" />,
+  <Responsabilidades key="5" />,
+  <Datos key="6" />,
+  <Conclusiones key="7" />,
+  <Cierre key="8" /> // <-- NUEVA LÍNEA
+]
   // Controladores de diapositivas
   const avanzar = () => {
     if (slideActual < diapositivas.length - 1) setSlideActual(slideActual + 1)
