@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import import Portada from './components/Portada'
+import Portada from './components/Portada'
 import Resumen from './components/Resumen'
 import MarcoNormativo from './components/MarcoNormativo'
 import Tipificacion from './components/Tipificacion'
 import Comparacion from './components/Comparacion'
 import Responsabilidades from './components/Responsabilidades'
-import Datos from './components/Datos' // <-- NUEVO
+import Datos from './components/Datos'
+import Conclusiones from './components/Conclusiones' // <-- NUEVO
 
 function App() {
   const [slideActual, setSlideActual] = useState(0)
@@ -18,7 +19,8 @@ const diapositivas = [
   <Tipificacion key="3" />,
   <Comparacion key="4" />,
   <Responsabilidades key="5" />,
-  <Datos key="6" /> // <-- NUEVO
+  <Datos key="6" />,
+  <Conclusiones key="7" /> // <-- NUEVO
 ]
 
   const avanzar = () => {
