@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Portada from './components/Portada'
+import Resumen from './components/Resumen' 
 
 function App() {
   // Aquí controlamos en qué diapositiva estamos (empezamos en la 0)
   const [slideActual, setSlideActual] = useState(0)
 
   // Aquí iremos agregando los componentes de tus diapositivas
-  const diapositivas = [
-    <Portada key="0" />,
-    // Aquí pondremos el Resumen, Delitos, etc.
-  ]
-
+// Aquí iremos agregando los componentes de tus diapositivas
+const diapositivas = [
+  <Portada key="0" />,
+  <Resumen key="1" />, 
+]
   const avanzar = () => {
     if (slideActual < diapositivas.length - 1) {
       setSlideActual(slideActual + 1)
