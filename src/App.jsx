@@ -27,7 +27,7 @@ const diapositivas = [
   <Cierre key="8" /> // <-- NUEVA LÍNEA
 ]
   // Controladores de diapositivas
-  const avanzar = () => {
+  function avanzar() {
     if (slideActual < diapositivas.length - 1) setSlideActual(slideActual + 1)
   }
 
