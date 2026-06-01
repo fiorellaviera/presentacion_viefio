@@ -1,121 +1,64 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Portada from './components/Portada'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Aquí controlamos en qué diapositiva estamos (empezamos en la 0)
+  const [slideActual, setSlideActual] = useState(0)
+
+  // Aquí iremos agregando los componentes de tus diapositivas
+  const diapositivas = [
+    <Portada key="0" />,
+    // Aquí pondremos el Resumen, Delitos, etc.
+  ]
+
+  const avanzar = () => {
+    if (slideActual < diapositivas.length - 1) {
+      setSlideActual(slideActual + 1)
+    }
+  }
+
+  const retroceder = () => {
+    if (slideActual > 0) {
+      setSlideActual(slideActual - 1)
+    }
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="min-h-screen bg-rose-50 flex flex-col items-center justify-center p-4 sm:p-8 font-sans">
+      
+      {/* Contenedor principal de la Diapositiva (El "Proyector") */}
+      <div className="w-full max-w-5xl aspect-video bg-white/40 border-2 border-white shadow-2xl rounded-3xl overflow-hidden relative flex flex-col">
+        
+        {/* Contenido de la diapositiva actual */}
+        <div className="flex-1 w-full h-full relative">
+          {diapositivas[slideActual]}
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+        {/* Barra de Controles Inferior */}
+        <div className="bg-white/80 backdrop-blur-md border-t border-pink-100 px-6 py-4 flex items-center justify-between">
+          <button 
+            onClick={retroceder}
+            disabled={slideActual === 0}
+            className="p-2 rounded-full bg-pink-50 text-pink-500 hover:bg-pink-100 disabled:opacity-30 transition-all flex items-center gap-2 font-bold"
+          >
+            <ChevronLeft size={24} /> <span className="hidden sm:inline">Anterior</span>
+          </button>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <span className="text-slate-400 font-medium">
+            Diapositiva {slideActual + 1} de {diapositivas.length}
+          </span>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+          <button 
+            onClick={avanzar}
+            disabled={slideActual === diapositivas.length - 1}
+            className="p-2 rounded-full bg-violet-50 text-violet-500 hover:bg-violet-100 disabled:opacity-30 transition-all flex items-center gap-2 font-bold"
+          >
+            <span className="hidden sm:inline">Siguiente</span> <ChevronRight size={24} />
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 
