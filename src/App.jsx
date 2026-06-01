@@ -5,6 +5,7 @@ import Resumen from './components/Resumen'
 import MarcoNormativo from './components/MarcoNormativo'
 import Tipificacion from './components/Tipificacion'
 import Comparacion from './components/Comparacion'
+import Responsabilidades from './components/Responsabilidades' // <-- NUEVO
 
 function App() {
   const [slideActual, setSlideActual] = useState(0)
@@ -14,7 +15,8 @@ function App() {
     <Resumen key="1" />,
     <MarcoNormativo key="2" />,
     <Tipificacion key="3" />,
-    <Comparacion key="4" />
+    <Comparacion key="4" />,
+    <Responsabilidades key="5" />
   ]
 
   const avanzar = () => {
