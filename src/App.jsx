@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Portada from './components/Portada'
 import Resumen from './components/Resumen'
-import MarcoNormativo from './components/MarcoNormativo' // <-- NUEVO 
+import MarcoNormativo from './components/MarcoNormativo'
+import Tipificacion from './components/Tipificacion' // <-- NUEVO
+
 
 function App() {
   // Aquí controlamos en qué diapositiva estamos (empezamos en la 0)
@@ -12,8 +14,9 @@ function App() {
 // Aquí iremos agregando los componentes de tus diapositivas
 const diapositivas = [
   <Portada key="0" />,
-  <Resumen key="1" />, 
-  <MarcoNormativo key="2" />
+  <Resumen key="1" />,
+  <MarcoNormativo key="2" />,
+  <Tipificacion key="3" />, // <-- NUEVO
 ]
   const avanzar = () => {
     if (slideActual < diapositivas.length - 1) {
