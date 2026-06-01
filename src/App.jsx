@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Portada from './components/Portada'
-import Resumen from './components/Resumen' 
+import Resumen from './components/Resumen'
+import MarcoNormativo from './components/MarcoNormativo' // <-- NUEVO 
 
 function App() {
   // Aquí controlamos en qué diapositiva estamos (empezamos en la 0)
@@ -12,6 +13,7 @@ function App() {
 const diapositivas = [
   <Portada key="0" />,
   <Resumen key="1" />, 
+  <MarcoNormativo key="2" />
 ]
   const avanzar = () => {
     if (slideActual < diapositivas.length - 1) {
